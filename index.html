@@ -46,18 +46,25 @@
             <label for="linn">Valige linn: </label>
             <select name="linn" id="linn">
               <option value="">- Valige linn -</option>
-              <option value="tln">Tallinn</option>
+              <option value="tln" title="Tarnekulu 0€">Tallinn</option>
               <!-- 0€ --->
-              <option value="trt">Tartu</option>
+              <option value="trt" title="Tarnekulu 2.5€">Tartu</option>
               <!-- 2.5€ --->
-              <option value="nrv">Narva</option>
+              <option value="nrv" title="Tarnekulu 2.5€">Tartu</option>
               <!-- 2.5€ --->
-              <option value="prn">P&auml;rnu</option>
+              <option value="prn" title="Tarnekulu 3€">P&auml;rnu</option>
               <!-- 3€ --->
             </select>
+            <h3 id="pricetag">+3€</h3>
           </div>
           <div id="calc">
-            <input type="submit" value="Arvuta tarne hind:" id="btn-delivery" />
+            <label>
+              <input
+                type="submit"
+                value="Arvuta tarne hind:"
+                id="btn-delivery"
+              />
+            </label>
           </div>
           <div id="delivery"></div>
         </form>

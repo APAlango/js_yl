@@ -36,7 +36,32 @@
     }
   });
 
-  // forms
+  document
+    .getElementById("linn")
+    .addEventListener("change", displayOptionPrice);
+
+  function displayOptionPrice(event) {
+    const cities = document.getElementById("linn");
+    const selectedValue = cities.options[cities.selectedIndex].value;
+    let euroAmount = -1;
+    switch (selectedValue) {
+      case "tln":
+        euroAmount = 0;
+        break;
+      case "trt":
+        euroAmount = 2.5;
+        break;
+      case "nrv":
+        euroAmount = 2.5;
+        break;
+      case "prn":
+        euroAmount = 3;
+        break;
+    }
+    if (euroAmount >= 0) {
+      document.getElementById("pricetag").innerHTML = `+${euroAmount}&euro;`;
+    } else document.getElementById("pricetag").innerHTML = "";
+  }
 
   document.getElementById("form").addEventListener("submit", estimateDelivery);
 
