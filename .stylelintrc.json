@@ -1,0 +1,51 @@
+{
+  "rules": {
+    "color-no-invalid-hex": true,
+    "declaration-block-no-shorthand-property-overrides": true,
+    "declaration-no-important": true,
+    "declaration-property-unit-blacklist": {
+      "font-size": ["px", "em"]
+    },
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global", "local"]
+      }
+    ],
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignoreTypes": ["/^my-custom-prefix-"]
+      }
+    ],
+    "selector-max-id": 1,
+    "selector-max-universal": 1,
+    "selector-max-type": [
+      1,
+      {
+        "ignore": ["child", "descendant"]
+      }
+    ],
+    "max-nesting-depth": 3,
+    "no-unknown-animations": true,
+    "property-no-unknown": true,
+    "unit-no-unknown": true,
+    "declaration-block-no-duplicate-properties": true,
+    "declaration-block-no-redundant-longhand-properties": true,
+    "selector-pseudo-element-colon-notation": "single",
+    "selector-max-compound-selectors": 3,
+    "selector-max-class": 3,
+    "function-url-quotes": "always",
+    "font-weight-notation": "numeric",
+    "value-keyword-case": "lower",
+    "declaration-property-unit-whitelist": {
+      "font-size": ["em", "rem", "px"]
+    },
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["include"]
+      }
+    ]
+  }
+}
