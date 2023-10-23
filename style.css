@@ -57,7 +57,14 @@ form {
 }
 
 #calc {
+<<<<<<< HEAD
   margin-left: 25px;
+=======
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+>>>>>>> bcc16d2bfc1875741c1d887a0413f128826c33f9
 }
 
 #clock {
@@ -91,3 +98,52 @@ input[type="submit"] {
   height: 300px;
   margin: auto;
 }
+<<<<<<< HEAD
+=======
+
+/** Minu looming **/
+#form-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+form#form {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: start;
+  flex-wrap: nowrap;
+  line-height: 24px;
+  width: min(400px, 100vw);
+}
+
+#input-fields,
+#form-checkbox,
+#dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+div#input-fields > div {
+  font-size: 6rem;
+  padding: 0;
+}
+
+div#oma-looming-div-arvuta {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+#first-name,
+#last-name {
+  display: flex;
+  flex-direction: column;
+}
+
+#delivery {
+  font-size: 2rem;
+  line-height: 0;
+  padding: 0;
+}
+>>>>>>> bcc16d2bfc1875741c1d887a0413f128826c33f9

@@ -16,58 +16,58 @@
       <hr />
       <section id="section2">
         <h3>2. osa: Vormid</h3>
-        <form id="form">
-          <!-- input field --->
-          <div id="input-fields">
-            <div id="first-name">
-              <label for="fname">Eesnimi:</label>
-              <input type="text" id="fname" name="fname" />
+        <div id="form-wrapper">
+          <form id="form">
+            <!-- input field --->
+            <div id="input-fields">
+              <div id="first-name">
+                <label for="fname">Eesnimi:</label>
+                <input type="text" id="fname" name="fname" />
+              </div>
+              <div id="last-name">
+                <label for="lname">Perekonnanimi:</label>
+                <input type="text" id="lname" name="lname" />
+              </div>
             </div>
-            <div id="last-name">
-              <label for="lname">Perekonnanimi:</label>
-              <input type="text" id="lname" name="lname" />
+            <!-- checkbox --->
+            <div id="form-checkbox">
+              <div class="box">
+                <input type="checkbox" id="v1" name="v1" value="present" />
+                <label for="vehicle1"> See on kingitus</label>
+                <!-- 5€ --->
+              </div>
+              <div class="box">
+                <input type="checkbox" id="v2" name="v2" value="contactless" />
+                <label for="vehicle2"> Soovin kontaktivaba tarnet</label>
+                <!-- 1€ --->
+              </div>
             </div>
-          </div>
-          <!-- checkbox --->
-          <div id="form-checkbox">
-            <div class="box">
-              <input type="checkbox" id="v1" name="v1" value="present" />
-              <label for="v1"> See on kingitus</label>
-              <!-- 5€ --->
+            <!-- dropdown --->
+            <div id="dropdown">
+              <label for="linn">Valige linn: </label>
+              <select name="linn" id="linn">
+                <option value="">- Valige linn -</option>
+                <option value="tln">Tallinn</option>
+                <!-- 0€ --->
+                <option value="trt">Tartu</option>
+                <!-- 2.5€ --->
+                <option value="nrv">Narva</option>
+                <!-- 2.5€ --->
+                <option value="prn">P&auml;rnu</option>
+                <!-- 3€ --->
+              </select>
             </div>
-            <div class="box">
-              <input type="checkbox" id="v2" name="v2" value="contactless" />
-              <label for="v2"> Soovin kontaktivaba tarnet</label>
-              <!-- 1€ --->
-            </div>
-          </div>
-          <!-- dropdown --->
-          <div id="dropdown">
-            <label for="linn">Valige linn: </label>
-            <select name="linn" id="linn">
-              <option value="">- Valige linn -</option>
-              <option value="tln" title="Tarnekulu 0€">Tallinn</option>
-              <!-- 0€ --->
-              <option value="trt" title="Tarnekulu 2.5€">Tartu</option>
-              <!-- 2.5€ --->
-              <option value="nrv" title="Tarnekulu 2.5€">Tartu</option>
-              <!-- 2.5€ --->
-              <option value="prn" title="Tarnekulu 3€">P&auml;rnu</option>
-              <!-- 3€ --->
-            </select>
-            <h3 id="pricetag">+3€</h3>
-          </div>
-          <div id="calc">
-            <label>
+
+            <div id="calc">
               <input
                 type="submit"
                 value="Arvuta tarne hind:"
                 id="btn-delivery"
               />
-            </label>
-          </div>
-          <div id="delivery"></div>
-        </form>
+              <div id="delivery"></div>
+            </div>
+          </form>
+        </div>
       </section>
       <hr />
       <section id="section3">
@@ -78,7 +78,7 @@
     <script type="text/javascript" src="script.js"></script>
     <script
       type="text/javascript"
-      src="https://www.bing.com/api/maps/mapcontrol?callback=GetMap"
+      src="https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=[AqLLRE37SJGqIxXEYxezPUa6fF2oCzl3cvG4n05FtFIVBrotBYxchpMYYpwuxBak]"
       async
       defer
     ></script>
