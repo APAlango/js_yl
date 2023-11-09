@@ -69,9 +69,11 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 50px;
+  font-size: 72px;
   font-family: "PT Serif", serif;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  color: #b12c2c;
 }
 
 input[type="submit"] {

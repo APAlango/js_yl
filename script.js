@@ -11,6 +11,12 @@
 
     function updateClock() {
       let date = new Date();
+
+      // Time offset fix
+      date.setMilliseconds(date.getMilliseconds() + 1000);
+      
+
+
       let h = date.getHours();
       let m = date.getMinutes();
       let s = date.getSeconds();
