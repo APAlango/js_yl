@@ -43,9 +43,17 @@
     
     let e = document.getElementById("delivery");
     if (!e) console.log(`Cannot find element with id '#delivery'`)
+    let total = 0;
     e.innerHTML = "0,00 &euro;";
     console.log(`estimateDelivery()`)
 
+    // Checkboxid
+    let v1 = document.getElementById('v1');
+    if (v1 && v1.checked) total += 5;
+    let v2 = document.getElementById('v2');
+    if (v2 && v2.checked) total += 1;
+
+    // Linn
     let linn = document.getElementById("linn");
 
     if (linn.value === "") {
@@ -54,16 +62,15 @@
       linn.focus();
       return;
     } else {
-      if (linn.value == 'tln')
-        e.innerHTML = `0 &euro;`;
-      else if (linn.value == 'trt')
-        e.innerHTML = `2,5 &euro;`;
+      if (linn.value == 'trt')
+        total += 2.5;
       else if (linn.value == 'nrv')
-        e.innerHTML = `2,5 &euro;`;
+        total += 2.5;
       else if (linn.value == 'prn')
-        e.innerHTML = `3 &euro;`;
+        total += 3;
       else
         console.log("ERROR STATE")
+      e.innerHTML = `${total} &euro;`;
     }
 
     console.log("Tarne hind on arvutatud");
