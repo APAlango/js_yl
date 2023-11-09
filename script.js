@@ -40,41 +40,72 @@
 
   function estimateDelivery(event) {
     event.preventDefault();
-    
-    let e = document.getElementById("delivery");
-    if (!e) console.log(`Cannot find element with id '#delivery'`)
-    let total = 0;
-    e.innerHTML = "0,00 &euro;";
-    console.log(`estimateDelivery()`)
 
-    // Checkboxid
-    let v1 = document.getElementById('v1');
-    if (v1 && v1.checked) total += 5;
-    let v2 = document.getElementById('v2');
-    if (v2 && v2.checked) total += 1;
-
-    // Linn
-    let linn = document.getElementById("linn");
-
-    if (linn.value === "") {
-      alert("Palun valige linn nimekirjast");
-
-      linn.focus();
-      return;
-    } else {
-      if (linn.value == 'trt')
-        total += 2.5;
-      else if (linn.value == 'nrv')
-        total += 2.5;
-      else if (linn.value == 'prn')
-        total += 3;
-      else
-        console.log("ERROR STATE")
-      e.innerHTML = `${total} &euro;`;
+    const errorMessages = validateFormInputs();
+    if (errorMessages.length > 0) {
+      window.alert(errorMessages.join('\n'))
     }
+    else {
+      let e = document.getElementById("delivery");
+      if (!e) console.log(`Ei leia elementi id-ga '#delivery'!s`)
+      let total = 0;
+      e.innerHTML = "0,00 &euro;";
+      console.log(`estimateDelivery()`)
 
+      // Checkboxid
+      let v1 = document.getElementById('v1');
+      if (v1 && v1.checked) total += 5;
+      let v2 = document.getElementById('v2');
+      if (v2 && v2.checked) total += 1;
+
+      // Linn
+      let linn = document.getElementById("linn");
+
+      if (linn.value === "") {
+        alert("Palun valige linn nimekirjast"); 
+        linn.focus();
+        return;
+      } else {
+        if (linn.value == 'trt')
+          total += 2.5;
+        else if (linn.value == 'nrv')
+          total += 2.5;
+        else if (linn.value == 'prn')
+          total += 3;
+        else
+          console.log("ERROR STATE")
+        e.innerHTML = `${total} &euro;`;
+      }
     console.log("Tarne hind on arvutatud");
+    }
   }
+
+  function validateFormInputs() {
+    const errorMessages = [];
+    // eesnimi
+    let fname = document.getElementById('fname');
+    if (!fname) errorMessages.push("Midagi on veebilehega katki.")
+    else if (fname.value == "") errorMessages.push("Palun sisesta oma eesnimi.")
+    else if (fname.value.length < 2) errorMessages.push("Eesnimi peab olema vähemalt 2 tähte pikk.")
+    // perenimi
+    let lname = document.getElementById('lname');
+    if (!lname) errorMessages.push("Midagi on veebilehega katki.")
+    else if (lname.value == "") errorMessages.push("Palun sisesta oma perekonnanimi.")
+    else if (lname.value.length < 2) errorMessages.push("Perekonnanimi peab olema vähemalt 2 tähte pikk.")
+    // kingitus - optional
+    // kontaktivaba - optional
+    // linn
+    let linn = document.getElementById("linn");
+    if (!linn) errorMessages.push("Midagi on veebilehega katki.");
+    else if (!['tln', 'trt', 'nrv', 'prn'].includes(linn.value)) errorMessages.push(`Palun valige linn nimekirjast.`);
+
+    // payment-method
+    const payment = document.querySelector('input[name="paymentmethod"]:checked');
+    if (!payment || payment.value == '') errorMessages.push("Kõigil on lemmik makseviis! Sa pead ühe valima.")
+    else if (!['LHV', 'REVOLUT', 'MASTERCARD'].includes(payment.value)) errorMessages.push(`Valitud makseviis '${payment.value}' pole lubatud. Kuidas sa selle valisid?`);
+    return errorMessages;
+  }
+
 })();
 
 // map

@@ -57,14 +57,10 @@ form {
 }
 
 #calc {
-<<<<<<< HEAD
-  margin-left: 25px;
-=======
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
->>>>>>> bcc16d2bfc1875741c1d887a0413f128826c33f9
 }
 
 #clock {
@@ -98,8 +94,6 @@ input[type="submit"] {
   height: 300px;
   margin: auto;
 }
-<<<<<<< HEAD
-=======
 
 /** Minu looming **/
 #form-wrapper {
@@ -146,4 +140,8 @@ div#oma-looming-div-arvuta {
   line-height: 0;
   padding: 0;
 }
->>>>>>> bcc16d2bfc1875741c1d887a0413f128826c33f9
+
+#radios-selection {
+  display: flex;
+  flex-direction: column;
+}

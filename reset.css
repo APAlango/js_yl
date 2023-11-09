@@ -47,10 +47,6 @@ ol,
 ul,
 li,
 fieldset,
-<<<<<<< HEAD
-form,
-=======
->>>>>>> bcc16d2bfc1875741c1d887a0413f128826c33f9
 label,
 legend,
 table,
@@ -118,10 +114,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-<<<<<<< HEAD
   content: "";
-=======
->>>>>>> bcc16d2bfc1875741c1d887a0413f128826c33f9
   content: none;
 }
 
@@ -145,11 +138,7 @@ mark {
   background-color: #ff9;
   color: #000;
   font-style: italic;
-<<<<<<< HEAD
-  font-weight: bold;
-=======
   font-weight: 700;
->>>>>>> bcc16d2bfc1875741c1d887a0413f128826c33f9
 }
 
 del {

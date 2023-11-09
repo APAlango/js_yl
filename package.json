@@ -7,7 +7,7 @@
   },
   "prettier": {},
   "scripts": {
-    "serve": "index.js",
+    "serve": "node index.js",
     "lint": "npx stylelint \"./*.css\" --fix"
   }
 }
