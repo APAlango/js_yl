@@ -80,6 +80,10 @@
     }
   }
 
+  function hasNumber(myString) {
+    return /\d/.test(myString);
+  }
+
   function validateFormInputs() {
     const errorMessages = [];
     // eesnimi
@@ -87,11 +91,13 @@
     if (!fname) errorMessages.push("Midagi on veebilehega katki.")
     else if (fname.value == "") errorMessages.push("Palun sisesta oma eesnimi.")
     else if (fname.value.length < 2) errorMessages.push("Eesnimi peab olema vähemalt 2 tähte pikk.")
+    else if (hasNumber(fname.value)) errorMessages.push("Eesnimi ei tohi sisaldada numbreid.")
     // perenimi
     let lname = document.getElementById('lname');
     if (!lname) errorMessages.push("Midagi on veebilehega katki.")
     else if (lname.value == "") errorMessages.push("Palun sisesta oma perekonnanimi.")
     else if (lname.value.length < 2) errorMessages.push("Perekonnanimi peab olema vähemalt 2 tähte pikk.")
+    else if (hasNumber(lname.value)) errorMessages.push("Perenimi ei tohi sisaldada numbreid.")
     // kingitus - optional
     // kontaktivaba - optional
     // linn
@@ -118,23 +124,58 @@ let map;
 function GetMap() {
   "use strict";
 
-  let centerPoint = new Microsoft.Maps.Location(58.38104, 26.71992);
+  let initialCenterPoint = new Microsoft.Maps.Location(58.38104, 26.71992);
+  let myNewPoint = new Microsoft.Maps.Location(52.561852, 13.472157);
+
+  let newCenterPoint = new Microsoft.Maps.Location((initialCenterPoint.latitude+myNewPoint.latitude)/2, (initialCenterPoint.longitude+myNewPoint.longitude)/2)
 
   map = new Microsoft.Maps.Map("#map", {
     credentials: mapAPIKey,
-    center: centerPoint,
-    zoom: 14,
+    center: newCenterPoint,
+    zoom: 5,
     mapTypeId: Microsoft.Maps.MapTypeId.road,
     disablePanning: true,
   });
 
-  let pushpin = new Microsoft.Maps.Pushpin(centerPoint, {
+  let infobox = new Microsoft.Maps.Infobox(newCenterPoint, {
+    title: 'My Infobox',
+    description: 'This is the default description.',
+    visible: false
+  });
+
+  infobox.setMap(map);
+
+  let pushpin = new Microsoft.Maps.Pushpin(initialCenterPoint, {
     title: "Tartu Ülikool",
-    //subTitle: 'Hea koht',
+    subTitle: 'Hea koht',
     //text: 'UT'
   });
 
+  let myPushpin = new Microsoft.Maps.Pushpin(myNewPoint, {
+    title: "Teepood Berliinis",
+    subTitle: "Kui leiad end Berliinis ning soovid osta teed suurtes kogustes, siis vaata siia!"
+  });
+
+  Microsoft.Maps.Events.addHandler(myPushpin, 'click', () => {
+    infobox.setOptions({
+      location: myPushpin.getLocation(),
+      title: myPushpin.getTitle(),
+      description: myPushpin.getSubTitle(),
+      visible: true
+    })
+  })
+
+  Microsoft.Maps.Events.addHandler(pushpin, 'click', () => {
+    infobox.setOptions({
+      location: pushpin.getLocation(),
+      title: pushpin.getTitle(),
+      description: pushpin.getSubTitle(),
+      visible: true
+    })
+  })
+
   map.entities.push(pushpin);
+  map.entities.push(myPushpin);
 }
 
 // https://dev.virtualearth.net/REST/v1/Locations?q=1000 Vin Scully Ave, Los Angeles,CA&key=YOUR_KEY_HERE
