@@ -36,40 +36,15 @@
     }
   });
 
-  document
-    .getElementById("linn")
-    .addEventListener("change", displayOptionPrice);
-
-  function displayOptionPrice(event) {
-    const cities = document.getElementById("linn");
-    const selectedValue = cities.options[cities.selectedIndex].value;
-    let euroAmount = -1;
-    switch (selectedValue) {
-      case "tln":
-        euroAmount = 0;
-        break;
-      case "trt":
-        euroAmount = 2.5;
-        break;
-      case "nrv":
-        euroAmount = 2.5;
-        break;
-      case "prn":
-        euroAmount = 3;
-        break;
-    }
-    if (euroAmount >= 0) {
-      document.getElementById("pricetag").innerHTML = `+${euroAmount}&euro;`;
-    } else document.getElementById("pricetag").innerHTML = "";
-  }
-
   document.getElementById("form").addEventListener("submit", estimateDelivery);
-
-  let e = document.getElementById("delivery");
-  e.innerHTML = "0,00 &euro;";
 
   function estimateDelivery(event) {
     event.preventDefault();
+    
+    let e = document.getElementById("delivery");
+    if (!e) console.log(`Cannot find element with id '#delivery'`)
+    e.innerHTML = "0,00 &euro;";
+    console.log(`estimateDelivery()`)
 
     let linn = document.getElementById("linn");
 
@@ -77,10 +52,18 @@
       alert("Palun valige linn nimekirjast");
 
       linn.focus();
-
       return;
     } else {
-      e.innerHTML = "x,xx &euro;";
+      if (linn.value == 'tln')
+        e.innerHTML = `0 &euro;`;
+      else if (linn.value == 'trt')
+        e.innerHTML = `2,5 &euro;`;
+      else if (linn.value == 'nrv')
+        e.innerHTML = `2,5 &euro;`;
+      else if (linn.value == 'prn')
+        e.innerHTML = `3 &euro;`;
+      else
+        console.log("ERROR STATE")
     }
 
     console.log("Tarne hind on arvutatud");
